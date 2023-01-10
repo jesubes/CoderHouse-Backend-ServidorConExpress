@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "mochila rosa",
+        "description":"tachas y cremallera negra",
+        "price": 100,
+        "thumbnail": "#",
+        "code":"43321",
+        "stock":12
+    },
+    {
+        "id": 2,
+        "title": "mochila negra",
+        "description":"tachas y cremallera negra",
+        "price": 134,
+        "thumbnail": "#",
+        "code":"42355",
+        "stock":11
+    }
+]
