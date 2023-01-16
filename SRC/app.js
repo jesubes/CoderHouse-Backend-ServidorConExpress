@@ -3,6 +3,8 @@ const ProductManager = require('./ProductManager');
 
 const app =  express();
 const port = 8080;
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 
 const pm = new ProductManager('./productos.json')
 
@@ -11,13 +13,23 @@ app.get('/',(request, response) => {
 })
 
 app.get('/products', async (request, response) => {
+
+    const { limit } = request.query;
     const data = await pm.getProducts();
-    response.send(data)
+
+    if (!limit) {
+        response.send(data)
+    }
+    else {
+        for (i = 0; i <= limit; i++) {
+            response.send(data[i])
+        }
+    }
 })
 
 app.get('./products/:pid', async (requiest, response) => {
-    const productoUnitario = requiest.params['pid'];
-    const data = await pm.getProductById(productoUnitario);
+    const pid = requiest.params.pid;
+    const data = await pm.getProductById(parseInt(pid));
     response.send(data);
 })
 

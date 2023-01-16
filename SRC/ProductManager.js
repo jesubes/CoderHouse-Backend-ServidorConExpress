@@ -47,8 +47,9 @@ class ProductManager{
 
     async getProductById(id) {
         const db = await this.getProducts();
-        if (db.find((product) => product.id == id)) {
-            return db.find((product) => product.id)
+        const find = db.find((product) => product.id == id)
+        if (find) {
+            return find
         } else console.log("No existe ID del producto");
 
     }
